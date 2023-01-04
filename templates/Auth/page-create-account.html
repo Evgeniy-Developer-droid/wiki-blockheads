@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page - Create account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="page__create-ccount.css">
+</head>
+<body class="container-fluid">
+<header class="main_header">
+    <div class="wrapper">
+        <div class="flexbox main__header-flexbox">
+
+            <div class="main__header-main-menu">
+                <div class="main-menu">
+                    <img class="menu-icon" src="../../static/media/img/MediaWiki/img/3-lines-menu.svg">
+                </div>
+            </div>
+
+            <div class="main__header-logo">
+                <div class="logo">
+                    <img class="logo-img" src="../../static/media/img/MediaWiki/img/logo-img.svg">
+                    <span class="logo-text">MediaWiki</span>
+                </div>
+            </div>
+
+            <div class="main__header-search-mediawiki">
+                <form class="form-input-search">
+                    <img class="icon-search" src="../../static/media/img/MediaWiki/img/vector-search.png">
+                    <input id="search" type="text" name=text" class="search" placeholder="Search MediaWiki">
+                    <input type="submit" name="submit" class="submit" value="Search">
+                </form>
+            </div>
+
+            <div class="main__header-change-language">
+                <a href="#" class="change-language">
+                    <img class="language-icons" src="../../static/media/img/MediaWiki/img/language.svg">
+                    <span>English</span>
+                </a>
+            </div>
+
+            <div class="main__header-create-account">
+                <a href="#" class="create-account">
+                    <span>Create account</span>
+                </a>
+            </div>
+
+
+            <div class="main__header-more-options">
+                <a href="#" class="more-options">
+                    <img class="three-dots-icon" src="../../static/media/img/MediaWiki/img/three-dots-svgrepo-com%20(4).svg">
+                </a>
+            </div>
+        </div>
+
+        <div class="main__header-sitenotice">
+            <div class="sitenotice">
+
+            </div>
+        </div>
+    </div>
+</header>
+<main class="main-content">
+
+
+        <div class="title__log-in">
+            <h1>Create account</h1>
+        </div>
+
+        <div class="language_links">
+            <p>
+                Language: <a href="#" hreflang="de" lang="de">Deutsch</a> |
+                <a href="#" hreflang="en" lang="en"> English</a> |
+                <a href="#" hreflang="es" lang="es"> Esperanto</a> |
+                <a href="#" hreflang="fr" lang="fr"> français</a> |
+                <a href="#" hreflang="es" lang="es"> español</a> |
+                <a href="#" hreflang="it" lang="it"> italiano</a> |
+                <a href="#" hreflang="it" lang="it"> Nederlands</a> |
+            </p>
+        </div>
+    <div class="content__wrapper">
+        <form class="form-input" action="register" method="post">
+            {% csrf_token %}
+
+            <label>Username</label>
+            <div class="mw-input-login">
+                <input class="input__username" placeholder="Enter your username" name="username">
+            </div>
+
+            <label>Password</label>
+            <div class="mw-input-login">
+                <input  class="input__username" type="password" placeholder="Enter your password" name="password1">
+            </div>
+
+            <div class="form-text">
+                <label>It is recommended to use a unique password
+                       <br>that you are not using on any other website.
+                </label>
+            </div>
+
+            <label>Confirm password</label>
+            <div class="mw-input-login">
+                <input class="input__username" type="password" placeholder="Enter password again" name="password2">
+            </div>
+
+            <label>Email address (optional)</label>
+            <div class="mw-input-login">
+                <input  class="input__username" placeholder="Enter your email address" name="email">
+            </div>
+
+            <div class="form-text">
+                <label>To protect the wiki against automated account
+                    <br>creation, we kindly ask you to enter the words
+                    <br>that appear below in the box (<a href="#">more info</a>):
+                </label>
+            </div>
+
+            <!-- <div id="captcha" class="form-text">
+                <label>CAPTCHA Security check</label>
+            </div>
+
+            <div class="captcha-container">
+                <div class="captcha-text-and-reload">
+                    <img class="img-captcha-text" src="../../static/media/img/MediaWiki/img/captcha.png">
+                    <a href="#" class="captcha-reload image-captcha-reload">Refresh</a>
+                </div>
+                    <input  class="enter_captcha-text " type="text" placeholder="Enter the text you see on the image">
+                    <label>Can't see the image? Ask at the <a href="#">support desk.</a></label>
+            </div> -->
+            
+            <div class="error-form-data">
+                {% for i in messages %}
+                <p class="error-login-data">{{ i }}</p>
+                {% endfor %}
+
+            </div>
+
+            <button class="button__login" type="submit">Create your account</button>
+        </form>
+
+           <div class="benefits-container">
+             <h2>MediaWiki is made by people like you.</h2>
+               <div class="create-benefits-list">
+
+                   <div class="number-text-edit">
+                     <img class="img-edit" src="../../static/media/img/MediaWiki/img/edits.png">
+                       <div class="edits-and-numbers">
+                         <h3>5,575,896</h3>
+                         <p>edits</p>
+                       </div>
+                   </div>
+
+                   <div class="number-text-edit">
+                       <img class="img-edit" src="../../static/media/img/MediaWiki/img/pages.png">
+                       <div class="pages-and-numbers">
+                           <h3>57,795</h3>
+                           <p>pages</p>
+                       </div>
+                   </div>ndex
+
+                   <div class="number-text-edit">
+                       <img class="img-contribute" src="../../static/media/img/MediaWiki/img/contribute.png">
+                       <div class="contribute-and-numbers">
+                           <h3>948</h3>
+                           <p>recent contributors</p>
+                       </div>
+                   </div>
+               </div>
+           </div>
+    </div>
+
+</main>
+<footer class="main-footer">
+    <div class="nav">
+
+        <nav class="footer__menu">
+            <ul class="footer_elements">
+                <li>
+                    <a href="#">
+                        Privacy policy
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        About MediaWiki.org
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Disclaimers
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Code of Conduct
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Mobile view
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Developers
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Statistics
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Cookie statement
+                    </a>
+                </li>
+
+                <div id="footer-icons" class="footer_buttons">
+                    <a href="#">
+                        <img  src="../../static/media/img/MediaWiki/img/wikimedia-button.png">
+                    </a>
+                    <a href="#">
+                        <img id="button_footer1" src="../../static/media/img/MediaWiki/img/poweredby_mediawiki_88x31.png">
+                    </a>
+                </div>
+            </ul>
+        </nav>
+
+
+
+    </div>
+</footer>
+</body>
+</html>
