@@ -9,7 +9,7 @@ class PostsModel(models.Model):
     timestamps = models.DateTimeField(auto_now_add=True)
     topic = models.CharField(max_length=255, default='')
     message = models.TextField()
-    media = models.ImageField(upload_to='static/media/content', default='', blank=True)
+    media = models.ImageField(upload_to='content', default='', blank=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='user')
 
     class Meta:

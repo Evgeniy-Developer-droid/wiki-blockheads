@@ -6,8 +6,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('Auth.urls')),
-    path('', include('Content.urls'))
-]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('', include('Content.urls')),
+    path('summernote/', include('django_summernote.urls'))
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

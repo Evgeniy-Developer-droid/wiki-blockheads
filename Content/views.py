@@ -5,7 +5,8 @@ from rest_framework.generics import GenericAPIView
 from .serializers import PostsSerializer
 from .pagination import StandardResultsSetPagination
 from .models import PostsModel
-from .forms import CreatePostForm
+# from .forms import CreatePostForm
+from .forms import CreatePostForm, FormForPostModel
 
 
 class GetAllPostsView(GenericAPIView):
@@ -32,6 +33,8 @@ class GetAllPostsView(GenericAPIView):
 
 class GetPostsForUser(GenericAPIView):
 
+    """View to get all posts by user with pagination"""
+
     queryset = PostsModel.objects.all()
     serializer_class = PostsSerializer
 
@@ -51,15 +54,26 @@ class GetPostsForUser(GenericAPIView):
 
 
 def create_new_post(request):
-    if request.method == 'POST':
-        form = CreatePostForm(request.POST)
-        if form.is_valid():
-            post = form.save()
-            return render(request, 'Content/create-post.html', context={'message': "Post created!"})
-        else:
-            return render(request, 'Content/create-post.html', context={'message': "Not valid data!"})
-    return render(request, 'Content/create-post.html')
+    # function to create a new post
+    form = CreatePostForm()
+    # if request.method == 'POST':
+    #     form = CreatePostForm(request.POST)
+    #     if form.is_valid():
+    #         post = form.save()
+    #         return render(request, 'Content/create-post.html', context={'message': "Post created!"})
+    #     else:
+    #         return render(request, 'Content/create-post.html', context={'message': "Not valid data!"})
+    return render(request, 'Content/create-post.html', context={'form': form})
+
+
+def single_post(request, pk):
+    # function to view a single post
+    post = PostsModel.objects.get(pk=pk)
+    return render(request, 'Content/single-post.html', context={'post': post})
+
 
 
 def main_page(request):
-    return render(request, 'Content/main-page.html')
+    # home page with posts
+    posts = PostsModel.objects.all()
+    return render(request, 'Content/main-page.html', context={'posts': posts})

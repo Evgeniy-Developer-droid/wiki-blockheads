@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Auth',
     'Content',
-    'rest_framework'
+    'rest_framework',
+    'django_summernote'
 ]
 
 MIDDLEWARE = [
@@ -125,9 +126,7 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-X_FRAME_OPTIONS = 'SAMEORIG'
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
