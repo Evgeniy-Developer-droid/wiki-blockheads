@@ -6,7 +6,7 @@ from .serializers import PostsSerializer
 from .pagination import StandardResultsSetPagination
 from .models import PostsModel
 # from .forms import CreatePostForm
-from .forms import CreatePostForm, FormForPostModel
+from .forms import CreatePostForm
 
 
 class GetAllPostsView(GenericAPIView):
@@ -56,13 +56,13 @@ class GetPostsForUser(GenericAPIView):
 def create_new_post(request):
     # function to create a new post
     form = CreatePostForm()
-    # if request.method == 'POST':
-    #     form = CreatePostForm(request.POST)
-    #     if form.is_valid():
-    #         post = form.save()
-    #         return render(request, 'Content/create-post.html', context={'message': "Post created!"})
-    #     else:
-    #         return render(request, 'Content/create-post.html', context={'message': "Not valid data!"})
+    if request.method == 'POST':
+        form = CreatePostForm(request.POST)
+        if form.is_valid():
+            post = form.save()
+            return render(request, 'Content/create-post.html', context={'message': "Post created!"})
+        else:
+            return render(request, 'Content/create-post.html', context={'message': "Not valid data!"})
     return render(request, 'Content/create-post.html', context={'form': form})
 
 
