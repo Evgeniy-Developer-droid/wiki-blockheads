@@ -125,6 +125,27 @@ table {
     cursor: pointer;
 }
 
+.main__header-logo a:hover{
+    text-decoration: none;
+    }
+    
+.logo {
+        display: flex;
+        height: 100%;
+        align-items: center;
+    }
+.logo-text{
+        font-family: 'Nunito', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        margin-left: 10px;
+        color: #000000;
+    }
+.logo-img{
+        width: 50px;
+        height: 50px;
+    }
+
 .left-navigation-content li {
     background-image: linear-gradient(to top, #77c1f6 0, #e8f2f8 1px, #ffffff 100%);
     background-position: left bottom;
@@ -210,7 +231,7 @@ input#search:focus{
     line-height: 1.6;
 
 }
-.main-logo{
+/* .main-logo{
     background-image: url("/static/media/img/Wikipedia-logo-for-Ukraine.png");
     background-repeat: no-repeat;
     display: block;
@@ -218,7 +239,7 @@ input#search:focus{
     height: 155px;
     text-decoration: none;
     background-position: center center;
-}
+} */
 .left-menu-panel{
 
 
@@ -362,6 +383,11 @@ input#search:focus{
     font-weight: 500;
     margin: 7px 0;
 }
+
+.link-for-post {
+    display: contents;
+}
+
 .three-dots-icon{
 
     width: 30px;
@@ -374,7 +400,6 @@ input#search:focus{
 .main-block-content span{
     margin: 10px;
 
-    float: right;
     background: #fafafa;
 }
 .main-block-links {
@@ -409,6 +434,7 @@ input#search:focus{
 .main-block-links a{
     font-size: 14px;
 }
+
 #image_Jan_Vermeer{
     width: 126px;
     height: 150px;

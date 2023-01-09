@@ -1,10 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView
+from datetime import datetime, timezone
+import time
 from .serializers import PostsSerializer
 from .pagination import StandardResultsSetPagination
-from .models import PostsModel
+from .models import PostsModel, CommentsModel
 # from .forms import CreatePostForm
 from .forms import CreatePostForm
 
@@ -59,21 +61,28 @@ def create_new_post(request):
     if request.method == 'POST':
         form = CreatePostForm(request.POST)
         if form.is_valid():
-            post = form.save()
-            return render(request, 'Content/create-post.html', context={'message': "Post created!"})
+            form.save()
+            return redirect('main-page')
         else:
-            return render(request, 'Content/create-post.html', context={'message': "Not valid data!"})
+            print(form, 'No')
+            return render(request, 'Content/create-post.html', context={'message': "Not valid data!", 'form': form})
     return render(request, 'Content/create-post.html', context={'form': form})
 
 
 def single_post(request, pk):
     # function to view a single post
     post = PostsModel.objects.get(pk=pk)
-    return render(request, 'Content/single-post.html', context={'post': post})
+    comments = CommentsModel.objects.filter(post=post)
+    return render(request, 'Content/single-post.html', context={
+        'post': post,
+        'comments_count': comments.count,
+        'comments': comments,
+        'time_published': post.timestamps
+        })
 
 
 
 def main_page(request):
     # home page with posts
-    posts = PostsModel.objects.all()
+    posts = PostsModel.objects.all().order_by('-timestamps')
     return render(request, 'Content/main-page.html', context={'posts': posts})

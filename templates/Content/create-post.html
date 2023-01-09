@@ -40,7 +40,7 @@
             </div>
 
             <div class="main__header-create-account">
-                <a href="#" class="create-account">
+                <a href="/auth/register" class="create-account">
                     <span>Create account</span>
                 </a>
             </div>
@@ -68,42 +68,24 @@
         <div class="form-create-post">
             <form action="create-new-post" method="post">
                 {% csrf_token %}
-                <span>Topic</span>
-                <input type="text" name="topic">
-                <span>Message</span>
+                <div class="input-topic">
+                    <span>Topic</span>
+                    <input type="text" name="topic">
+                </div>
 
-                {{ form.foo }}
+                <div class="input-message">
+                    <span>Message</span>
+                    <div class="sunnote-form">
+                    {{ form.message }}
+                </div>
+                </div>
 
-                <button type="submit">Create Post</button>
+                <div class="error-form-message">
+                    {{ message }}
+                </div>
+
+                <button type="submit" class="create-post-button">Create Post</button>
             </form>
-        </div>
-        <div class="page-toolbar">
-            <div class="left-navigation-toolbar">
-
-                <ul class="items-toolbar">
-                    <li>
-                        <a href="#1">MediaWiki.org</a>
-                    </li>
-                    <li>
-                        <a href="#2">Discussion</a>
-                    </li>
-                </ul>
-
-            </div>
-            <div class="right-navigation-toolbar">
-
-                <ul class="items-toolbar">
-                    <li>
-                        <a href="#3">View history</a>
-                    </li>
-                    <li>
-                        <a href="#4">Edit</a>
-                    </li>
-                    <li>
-                        <a href="#5">Read</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </div>
 </main>

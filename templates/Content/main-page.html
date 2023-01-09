@@ -9,7 +9,17 @@
 <body>
   <div class="left-menu-panel">
     <div class="left-menu-panel__container">
-        <a href="#" class="main-logo"></a>
+
+        <div class="main__header-logo">
+            <a href="#">
+            <div class="logo">
+                
+                <img class="logo-img" src="../static/media/img/logo-img.svg">
+                <span class="logo-text">MediaWiki</span>
+                
+            </div>
+           </a>
+        </div>
 
 
         <ul class="main_pages_list">
@@ -385,20 +395,21 @@
      </div>
      {% for i in posts %}
      <div id="feat-list" class="main-block">
-        <a href="post/{{ i.id }}">
             <div class="main-block-header">
-                <h1>{{ i.topic | safe }}</h1>
-                {% if i.media %}
-                <img class="main-block-image" src="/media/{{ i.media }}">
-                {% else %}
-                {% endif %}
+                <a href="post/{{ i.id }}" class="link-for-post">
+                    <h1>{{ i.topic | safe }}</h1>
+                    {% if i.media %}
+                    <img class="main-block-image" src="/media/{{ i.media }}">
+                    {% else %}
+                    {% endif %}
+                </a>
             </div>
             <div class="main-block-content">
                 <p>{{ i.message | safe }}</p>
             </div>
             <div class="main-block-links">
             </div>
-        </a>
+        <p>{{ i.timestamps }}</p>
     </div>
     {% endfor %}
            </div>

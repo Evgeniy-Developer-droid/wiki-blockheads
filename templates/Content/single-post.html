@@ -27,7 +27,7 @@
             </div>
 
             <div class="main__header-search-mediawiki">
-                <form>
+                <form class="form-input-search">
                     <img class="icon-search" src="../../static/media/img/vector-search.png">
                     <input id="search" type="text" name=text" class="search" placeholder="Search MediaWiki">
                     <input type="submit" name="submit" class="submit" value="Search">
@@ -42,7 +42,7 @@
             </div>
 
             <div class="main__header-create-account">
-                <a href="#" class="create-account">
+                <a href="/auth/register" class="create-account">
                     <span>Create account</span>
                 </a>
             </div>
@@ -117,130 +117,38 @@
 
 
                 <div class="flow-topic-titlebar">
-                  <h1>Allow Support on talk pages</h1>
+                  <h1>{{ post.topic }}</h1>
+                  <p>{{ post.message | safe }}</p>
                     <div class="flow-topic-meta">
-                        <span>7 comments •</span>
-                        <span>8 hours ago</span>
-                        <img src="../../static/media/img/3-points.svg">
+                        <span>{{ comments_count }} comments •</span>
+                        <span>{{ time_published }}</span>
                     </div>
                 </div>
+                
+                {% for comm in comments %}
 
-                 <div class="flow-post-main">
+
+                <div class="flow-post-main">
                     <div class="name-user-post">
-                        <a href="#"><h1>Lectrician1</h1></a>
-                        <img src="../../static/media/img/3-points.svg">
+                        <a href="#"><h1>{{ comm.user }}</h1></a>
                     </div>
                      <div class="main-content-post">
-                         <p>Because adding a "Support" namespace would be too burdensome, could we remove
-                             all the usages of Template:Not a support forum and make it policy
-                             that talk pages can be allowed for software support?</p>
+                         <p>{{ comm.comment }}</p>
                      </div>
                      <div class="undertext-content-post">
                          <a href="#"><span>Reply</span></a>
-                         <p>8 days ago</p>
+                         <p>{{ comm.timestamps }}</p>
                      </div>
                  </div>
 
-                 <div class="flow-post-main">
-                     <div class="name-user-post">
-                         <a href="#"><h1>Bawolff</h1></a>
-                         <img src="../../static/media/img/3-points.svg">
-                     </div>
-                     <div class="main-content-post">
-                         <p>I dont think all would be appropriate, but im fine with specific ones if someone
-                             is watching them (especially extensions). The biggest concern
-                             is individual talk pages might go unnoticed.</p>
-                     </div>
-                     <div class="undertext-content-post">
-                         <a href="#"><span>Reply</span></a>
-                         <p>8 days ago</p>
-                     </div>
-                 </div>
-
-                 <div class="flow-post-main">
-                     <div class="name-user-post">
-                         <a href="#"><h1>Lectrician1</h1></a>
-                         <img src="../../static/media/img/3-points.svg">
-                     </div>
-                     <div class="main-content-post">
-                         <p>If a question goes unnoticed well then we can direct users to go to Project:Support desk.</p>
-                     </div>
-                     <div class="undertext-content-post">
-                         <a href="#"><span>Reply</span></a>
-                         <p>8 days ago</p>
-                     </div>
-                 </div>
-
-
-                 <div class="flow-post-main">
-                     <div class="name-user-post">
-                         <a href="#"><h1>Legoktm</h1></a>
-                         <img src="../../static/media/img/3-points.svg">
-                     </div>
-                     <div class="main-content-post">
-                         <p>If the question is unnoticed, then how do we direct those users...?</p>
-                     </div>
-                     <div class="undertext-content-post">
-                         <a href="#"><span>Reply</span></a>
-                         <p>8 days ago</p>
-                     </div>
-                 </div>
-
-
-                 <div class="flow-post-main">
-                     <div class="name-user-post">
-                         <a href="#"><h1>Lectrician1</h1></a>
-                         <img src="../../static/media/img/3-points.svg">
-                     </div>
-                     <div class="main-content-post">
-                         <p>Could we have a message at the top of talk pages that points users to the Support desk if their question isn't answered there?</p>
-                     </div>
-                     <div class="undertext-content-post">
-                         <a href="#"><span>Reply</span></a>
-                         <p>8 days ago</p>
-                     </div>
-                 </div>
-
-
-                 <div class="flow-post-main">
-                     <div class="name-user-post">
-                         <a href="#"><h1>Dinoguy1000</h1></a>
-                         <img src="../../static/media/img/3-points.svg">
-                     </div>
-                     <div class="main-content-post">
-                         <p>You've just reinvented Template:Not a support forum, with weaker wording.
-
-                             I don't see why we need to relax things across the whole wiki. If an individual
-                             extension's maintainers want to use the extension's talk page as their support channel, that's their choice.</p>
-                     </div>
-                     <div class="undertext-content-post">
-                         <a href="#"><span>Reply</span></a>
-                         <p>8 days ago</p>
-                     </div>
-                 </div>
-
-
-
-                 <div class="flow-post-main">
-                     <div class="name-user-post">
-                         <a href="#"><h1>Jdforrester (WMF)</h1></a>
-                         <img src="../../static/media/img/3-points.svg">
-                     </div>
-                     <div class="main-content-post">
-                         <p>I agree with @<a href="#">Dinoguy1000</a>. Not sure there's a need for a general change, but extension maintainers are already welcome to invite support requests there if they wish.</p>
-                     </div>
-                     <div class="undertext-content-post">
-                         <a href="#"><span>Reply</span></a>
-                         <p>a days ago</p>
-                     </div>
-                 </div>
+                 {% endfor %}
 
                  <div class="reply-post">
                          <input id="reply" type="text" name=text" class="reply" placeholder="Reply to 'Allow Support on talk pages'">
                  </div>
 
 
-                 <div class="flow-topic-titlebar">
+                 <!-- <div class="flow-topic-titlebar">
                      <div class="done-titlebar">
                         <img src="../../static/media/img/done.svg">
                          <h1>Add "Support" namespace</h1>
@@ -285,14 +193,14 @@
 
                  <div class="reply-post">
                      <input id="reply" type="text" name=text" class="reply" placeholder="Reply to 'Batch page move'">
-                 </div>
+                 </div> -->
 
 
 
              </div>
            </div>
 
-            <div class="flow-board-right">
+            <!-- <div class="flow-board-right">
 
             <div class="text-about-board">
                <div class="text-item-board">
@@ -352,7 +260,7 @@
 
                 <div class="separator">
 
-                </div>
+                </div> -->
 
             </div>
 

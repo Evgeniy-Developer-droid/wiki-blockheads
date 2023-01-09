@@ -111,7 +111,9 @@ table {
 }
 
 
-.main-content{
+.main-content {
+
+    height: 500px;
 
 }
 
@@ -404,7 +406,7 @@ button:focus{
 .flow-board {
     float: left;
     clear: left;
-    width: 66%;
+    width: 100%;
     box-sizing: border-box;
     max-width: 1200px;
     padding-right: 26px;
@@ -546,10 +548,9 @@ input#reply1::placeholder {
     color: #202122;
 }
 .main-content{
-    height: 1500px;
+    display: flex;
+    flex-direction: column;
     width: 960px;
-    margin-left: auto;
-    margin-right: auto;
 }
 .text-footer p{
     color: #202122;

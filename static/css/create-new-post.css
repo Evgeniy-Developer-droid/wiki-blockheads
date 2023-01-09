@@ -56,6 +56,32 @@
     cursor: pointer;
 }
 
+.input-topic {
+    display: grid;
+}
+
+.input-topic input{
+    margin-top: 5px;
+    padding: 5px 0;
+}
+
+.input-message {
+    margin-top: 15px;
+}
+
+.sunnote-form {
+    margin-top: 6px;
+}
+
+.create-post-button {
+    background-color: #3366cc;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
 .form-create-post {
 
     width: 720px;
