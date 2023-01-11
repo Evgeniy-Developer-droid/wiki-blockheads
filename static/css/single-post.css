@@ -403,6 +403,11 @@ button:focus{
     border-radius: 2px;
     outline: 0;
 }
+
+.flow-topic-titlebar p{
+    margin: 10px 0;
+}
+
 .flow-board {
     float: left;
     clear: left;

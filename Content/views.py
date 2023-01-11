@@ -1,9 +1,6 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView
-from datetime import datetime, timezone
-import time
 from .serializers import PostsSerializer
 from .pagination import StandardResultsSetPagination
 from .models import PostsModel, CommentsModel
@@ -57,16 +54,17 @@ class GetPostsForUser(GenericAPIView):
 
 def create_new_post(request):
     # function to create a new post
-    form = CreatePostForm()
-    if request.method == 'POST':
-        form = CreatePostForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('main-page')
-        else:
-            print(form, 'No')
-            return render(request, 'Content/create-post.html', context={'message': "Not valid data!", 'form': form})
-    return render(request, 'Content/create-post.html', context={'form': form})
+    if request.user.is_authenticated:
+        form = CreatePostForm()
+        if request.method == 'POST':
+            form = CreatePostForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('main-page')
+            else:
+                return render(request, 'Content/create-post.html', context={'message': "Not valid data!", 'form': form})
+        return render(request, 'Content/create-post.html', context={'form': form})
+    return redirect('login')
 
 
 def single_post(request, pk):

@@ -140,11 +140,6 @@ SUMMERNOTE_CONFIG = {
             ['fontname', ['fontname']],
             ['fontsize', ['fontsize']],
             ['forecolor', ['forecolor']]
-            # ['color', ['color']],
-            # ['para', ['ul', 'ol', 'paragraph']],
-            # ['table', ['table']],
-            # ['insert', ['link', 'picture', 'video']],
-            # ['view', ['fullscreen', 'codeview', 'help']],
         ],
         'lang': 'en-US',
     }
