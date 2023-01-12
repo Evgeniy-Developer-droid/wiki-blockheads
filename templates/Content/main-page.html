@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>main-page-Wikipedia</title>
 
-    <link rel="stylesheet" href="../../static/css/main-page.css">
+    <link rel="stylesheet" href="{% static 'css/main-page.css' %}">
 </head>
 <body>
   <div class="left-menu-panel">
@@ -15,7 +16,7 @@
                 
                 <div class="logo">
                  
-                    <img id="logo-image-Wikipedia" class="logo-img" src="../static/media/img/logo-robot.png">
+                    <img id="logo-image-Wikipedia" class="logo-img" src="{% static 'media/img/logo-robot.png' %}">
                     <span class="logo-text">Blockheads</span>
                     
                 </div>
@@ -305,13 +306,13 @@
       <div class="personal-menu-content">
           <ul class="personal-menu-content-list">
               <li class="user-system">
-                  <a href="/create-new-post" title="">Create Post</a>
+                  <a href="{% url 'create-new-post' %}" title="">Create Post</a>
               </li>
               <li class="user_system">
-                  <a href="/auth/register" title="">Sign Up</a>
+                  <a href="{% url 'register' %}" title="">Sign Up</a>
               </li>
               <li class="user_system">
-                  <a href="/auth/login" title="">Log In</a>
+                  <a href="{% url 'login' %}" title="">Log In</a>
               </li>
           </ul>
       </div>
@@ -392,10 +393,10 @@
      {% for i in posts %}
      <div id="feat-list" class="main-block">
             <div class="main-block-header">
-                <a href="post/{{ i.id }}" class="link-for-post">
+                <a href="{% url 'single-post' i.id %}" class="link-for-post">
                     <h1>{{ i.topic | safe }}</h1>
                     {% if i.media %}
-                    <img class="main-block-image" src="/media/{{ i.media }}">
+                    <img class="main-block-image" src="{{ i.media.url }}">
                     {% else %}
                     {% endif %}
                 </a>
@@ -415,7 +416,7 @@
             <span class="title-main-bottom">Вікіпедія є проєктом&nbsp;
             <div class="logo-link">
                 <a href="#">
-                    <img src="../../static/media/img/logo-link.png" class="icon-logo-link">
+                    <img src="{% static 'media/img/logo-link.png' %}" class="icon-logo-link">
                 </a>
                 <a>&nbsp;Фонду Вікімедіа</a>
             </div>
@@ -428,75 +429,75 @@
                    <ul>
                        <li>
                            <a href="#" >
-                               <img src="../../static/media/img/vikislovnuk.png" class="main-button-icon-topics">
+                               <img src="{% static 'media/img/vikislovnuk.png' %}" class="main-button-icon-topics">
                            </a>
                            <a href="#">Вікісловник</a>
                        </li>
                        <li>
                            <a href="#" >
-                               <img src="../../static/media/img/wikicutatu.png" class="main-button-icon-topics">
+                               <img src="{% static 'media/img/wikicutatu.png' %}" class="main-button-icon-topics">
                            </a>
                            <a href="#">Вікіцитати</a>
                        </li>
                        <li>
                            <a href="#" >
-                               <img src="../../static/media/img/wikipidruchnuk.png" class="main-button-icon-topics">
+                               <img src="{% static 'media/img/wikipidruchnuk.png' %}" class="main-button-icon-topics">
                            </a>
                            <a href="#">Вікіпідручник</a>
                        </li>
                        <li>
                            <a href="#" >
-                               <img src="../../static/media/img/wikidzerela.png" class="main-button-icon-topics">
+                               <img src="{% static 'media/img/wikidzerela.png' %}" class="main-button-icon-topics">
                            </a>
                            <a href="#">Вікіджерела</a>
                        </li>
                        <li>
                            <a href="#" >
-                               <img src="../../static/media/img/wikinews.png" class="main-button-icon-topics">
+                               <img src="{% static 'media/img/wikinews.png' %}" class="main-button-icon-topics">
                            </a>
                            <a href="#">Вікіновини</a>
                        </li>
                        <li>
                            <a href="#" >
-                               <img src="../../static/media/img/wikiwersutet.png" class="main-button-icon-topics">
+                               <img src="{% static 'media/img/wikiwersutet.png' %}" class="main-button-icon-topics">
                            </a>
                            <a href="#">Віківерситет</a>
                        </li>
 
                        <li>
                            <a href="#" >
-                               <img src="../../static/media/img/wikivudu.png" class="main-button-icon-topics">
+                               <img src="{% static 'media/img/wikivudu.png' %}" class="main-button-icon-topics">
                            </a>
                            <a href="#">Віківиди</a>
                        </li>
                        <li>
                            <a href="#" >
-                               <img src="../../static/media/img/MediaWiki.png" class="main-button-icon-topics">
+                               <img src="{% static 'media/img/MediaWiki.png' %}" class="main-button-icon-topics">
                            </a>
                            <a href="#">MediaWiki</a>
                        </li>
                        <li>
                            <a href="#" >
-                               <img src="../../static/media/img/wikidani.png" class="main-button-icon-topics">
+                               <img src="{% static 'media/img/wikidani.png' %}" class="main-button-icon-topics">
                            </a>
                            <a href="#">Вікідані</a>
                        </li>
 
                        <li>
                            <a href="#" >
-                               <img src="../../static/media/img/wikishovushe.png" class="main-button-icon-topics">
+                               <img src="{% static 'media/img/wikishovushe.png' %}" class="main-button-icon-topics">
                            </a>
                            <a href="#">Вікісховище</a>
                        </li>
                        <li>
                            <a href="#" >
-                               <img src="../../static/media/img/wikimandru.png" class="main-button-icon-topics">
+                               <img src="{% static 'media/img/wikimandru.png' %}" class="main-button-icon-topics">
                            </a>
                            <a href="#">Вікімандри</a>
                        </li>
                        <li>
                            <a href="#" >
-                               <img src="../../static/media/img/meta-wiki.png" class="main-button-icon-topics">
+                               <img src="{% static 'media/img/meta-wiki.png' %}" class="main-button-icon-topics">
                            </a>
                            <a href="#">Мета-вікі</a>
                        </li>
@@ -507,7 +508,7 @@
             <span class="under-title-main-bottom">
             <div class="logo-link">
                 <a href="#">
-                    <img src="../../static/media/img/logo-link2.png" class="icon2-logo-link">
+                    <img src="{% static 'media/img/logo-link2.png' %}" class="icon2-logo-link">
                 </a>
                 <a>&nbsp;Вікімедіа Україна</a>
             </div>
@@ -569,10 +570,10 @@
                   </div>
                   <div id="footer-icons" class="footer_buttons">
                       <a href="#">
-                          <img  src="../../static/media/img/wikimedia-button.png">
+                          <img  src="{% static 'media/img/wikimedia-button.png' %}">
                       </a>
                       <a href="#">
-                          <img id="button_footer1" src="../../static/media/img/poweredby_mediawiki_88x31.png">
+                          <img id="button_footer1" src="{% static 'media/img/poweredby_mediawiki_88x31.png' %}">
                       </a>
                   </div>
               </ul>
