@@ -14,6 +14,7 @@ SECRET_KEY = 'django-insecure-y=_gmv)p@o4es@n+h8!5@-zatfdz_j244sjqrgga673lku9@ez
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.environ.get("DEBUG", 1)))
+USE_SQL_FILE = bool(int(os.environ.get("USE_SQL_FILE", 1)))
 
 ALLOWED_HOSTS = ['*']
 
@@ -75,7 +76,7 @@ DATABASES = {
     }
 }
 
-if not DEBUG:
+if not USE_SQL_FILE:
     DATABASES['default'] = {
         'ENGINE': os.environ.get('SQL_ENGINE', 'django.db.backends.postgresql'),
         'NAME': os.environ.get('SQL_DATABASE', BASE_DIR / "db.sqlite3"),
