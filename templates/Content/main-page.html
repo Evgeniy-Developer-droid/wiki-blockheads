@@ -305,15 +305,21 @@
     <div class="personal-labels">
       <div class="personal-menu-content">
           <ul class="personal-menu-content-list">
+            {% if user.is_authenticated %}
               <li class="user-system">
                   <a href="{% url 'create-new-post' %}" title="">Create Post</a>
               </li>
               <li class="user_system">
-                  <a href="{% url 'register' %}" title="">Sign Up</a>
-              </li>
-              <li class="user_system">
-                  <a href="{% url 'login' %}" title="">Log In</a>
-              </li>
+                <a href="{% url 'logout' %}" title="">Logout</a>
+            </li>
+            {% else %}
+            <li class="user_system">
+                <a href="{% url 'register' %}" title="">Sign Up</a>
+            </li>
+            <li class="user_system">
+                <a href="{% url 'login' %}" title="">Log In</a>
+            </li>
+            {% endif %}
           </ul>
       </div>
     </div>

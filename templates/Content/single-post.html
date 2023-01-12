@@ -44,11 +44,19 @@
                 </a>
             </div>
 
-            <div class="main__header-create-account">
-                <a href="{% url 'register' %}" class="create-account">
-                    <span>Create account</span>
-                </a>
-            </div>
+            {% if user.is_authenticated %}
+                <div class="main__header-create-account">
+                    <a href="{% url 'logout' %}" class="create-account">
+                        <span>Logout</span>
+                    </a>
+                </div>
+            {% else %}
+                <div class="main__header-create-account">
+                    <a href="{% url 'register' %}" class="create-account">
+                        <span>Create account</span>
+                    </a>
+                </div>
+            {% endif %}
 
 
             <div class="main__header-more-options">
