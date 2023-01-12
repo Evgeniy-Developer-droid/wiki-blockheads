@@ -25,7 +25,7 @@ services:
              python manage.py migrate &&
              gunicorn WIKISite.wsgi:application --bind 0.0.0.0:8000"
     volumes:
-      - static_volume:/home/app/staticfiles
+      - static_volume:/home/app/static
       - media_volume:/home/app/media
     ports:
       - 8000:8000
@@ -38,7 +38,7 @@ services:
     build: ./nginx
     restart: always
     volumes:
-      - static_volume:/home/app/staticfiles
+      - static_volume:/home/app/static
       - media_volume:/home/app/media
     ports:
       - 80:80
