@@ -6,10 +6,17 @@ class PostsModel(models.Model):
 
     """Post storage model"""
 
+    STATUS_POST = [
+        ('pending', 'pending'),
+        ('active', 'active')
+    ]
+
     timestamps = models.DateTimeField(auto_now_add=True)
     topic = models.CharField(max_length=255, default='')
     message = models.TextField()
+    status = models.CharField(max_length=255, choices=STATUS_POST, default='pending')
     media = models.ImageField(upload_to='content', default='', blank=True)
+    count_views = models.IntegerField(default=0)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='user')
 
     class Meta:
@@ -33,3 +40,12 @@ class CommentsModel(models.Model):
 
     def __str__(self) -> str:
         return self.post.topic
+
+
+class Settings(models.Model):
+
+    welcome_phrase = models.CharField(max_length=255)
+    description_site = models.TextField(default='')
+
+    def __str__(self) -> str:
+        return self.welcome_phrase

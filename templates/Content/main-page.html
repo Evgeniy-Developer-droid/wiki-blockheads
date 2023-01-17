@@ -232,16 +232,9 @@
       <div class="main_top_section">
         <div class="main_head">
             <div class="main_head-text-left">
-                <h1>Welcome to <a href="#">Wikipedia</a>,</h1>
-                <h2>a free encyclopedia that <a href="#">can be edited by anyone</a>.</h2>
-                <p><a href="#">Ukrainian Wikipedia</a> was founded <a href="#">January 30, 2004</a>.</p>
+                <h1>{{ settings.welcome_phrase }}</h1>
+                <p>{{ settings.description_site }}</p>
             </div>
-             <div class="main_head-text-right">
-                 <p>Wednesday, <a href="#">January 4, 2023</a></p>
-                 <p><a href="#">1,219,892</a> articles in <a href="#">Ukrainian</a></p>
-                 <p><b>154,662</b> registered contributors</p>
-                 <p><b>3289</b> of them are active in the last month</p>
-             </div>
         </div>
          <ul class="main_head_menu">
 
@@ -284,181 +277,17 @@
             </div>
             <div class="main-block-links">
             </div>
-        <p>{{ i.timestamps }}</p>
+            <div class="main-block-info">
+                <p>{{ i.count_views }} views  •</p>
+                <p>{{ i.timestamps }}</p>
+            </div>
     </div>
     {% endfor %}
            </div>
        </div>
-       <div class="main__bottom">
-        <h2>
-            <span class="title-main-bottom">Wikipedia is a project&nbsp;
-                <div class="logo-link">
-                    <a href="#">
-                        <img src="{% static 'img/logo-link.png' %}" class="icon-logo-link">
-                    </a>
-                    <a>&nbsp;Wikimedia Foundation</a>
-                </div>
-                    &nbsp; is a non-profit organization that takes care of a number of other projects
-                </span>
-        </h2>
-
-           <div class="main-block-content">
-               <div class="main-button-topics-list">
-                   <ul>
-                    <li>
-                        <a href="#" >
-                            <img src="{% static 'img/vikislovnuk.png' %}" class="main-button-icon-topics">
-                        </a>
-                        <a href="#">Wiki Dictionary</a>
-                    </li>
-                    <li>
-                        <a href="#" >
-                            <img src="{% static 'img/wikicutatu.png' %}" class="main-button-icon-topics">
-                        </a>
-                        <a href="#">Wikiquotes</a>
-                    </li>
-                    <li>
-                        <a href="#" >
-                            <img src="{% static 'img/wikipidruchnuk.png' %}" class="main-button-icon-topics">
-                        </a>
-                        <a href="#">Wiki Tutorial</a>
-                    </li>
-                    <li>
-                        <a href="#" >
-                            <img src="{% static 'img/wikidzerela.png' %}" class="main-button-icon-topics">
-                        </a>
-                        <a href="#">Wikisources</a>
-                    </li>
-                    <li>
-                        <a href="#" >
-                            <img src="{% static 'img/wikinews.png' %}" class="main-button-icon-topics">
-                        </a>
-                        <a href="#">Wikinews</a>
-                    </li>
-                    <li>
-                        <a href="#" >
-                            <img src="{% static 'img/wikiwersutet.png' %}" class="main-button-icon-topics">
-                        </a>
-                        <a href="#">Wikiversity</a>
-                    </li>
-
-                    <li>
-                        <a href="#" >
-                            <img src="{% static 'img/wikivudu.png' %}" class="main-button-icon-topics">
-                        </a>
-                        <a href="#">Wikipedia</a>
-                    </li>
-                    <li>
-                        <a href="#" >
-                            <img src="{% static 'img/MediaWiki.png' %}" class="main-button-icon-topics">
-                        </a>
-                        <a href="#">MediaWiki</a>
-                    </li>
-                    <li>
-                        <a href="#" >
-                            <img src="{% static 'img/wikidani.png' %}" class="main-button-icon-topics">
-                        </a>
-                        <a href="#">Wikidata</a>
-                    </li>
-
-                    <li>
-                        <a href="#" >
-                            <img src="{% static 'img/wikishovushe.png' %}" class="main-button-icon-topics">
-                        </a>
-                        <a href="#">Wikistore</a>
-                    </li>
-                    <li>
-                        <a href="#" >
-                            <img src="{% static 'img/wikimandru.png' %}" class="main-button-icon-topics">
-                        </a>
-                        <a href="#">Wikimandra</a>
-                    </li>
-                    <li>
-                        <a href="#" >
-                            <img src="{% static 'img/meta-wiki.png' %}" class="main-button-icon-topics">
-                        </a>
-                        <a href="#">Meta Wiki</a>
-                    </li>
-                   </ul>
-               </div>
-           </div>
-           <h3>
-            <span class="under-title-main-bottom">
-                <div class="logo-link">
-                    <a href="#">
-                        <img src="{% static 'img/logo-link2.png' %}" class="icon2-logo-link">
-                    </a>
-                    <a>&nbsp;Wikimedia</a>
-                </div>
-                    &nbsp;is a regional branch of the Wikimedia Foundation
-                </span>
-           </h3>
-       </div>
    </main>
-
-  <footer class="main__footer">
-      <div class="nav">
-        <div class="text-footer">
-            <p>The text is available under the terms of the <a href="#">Creative Commons Attribution-ShareAlike</a> license;
-                additional terms and conditions may also apply. For more details, see <a href="#">Terms of Use</a>.</p>
-        </div>
-          <nav class="main-footer__menu">
-              <ul class="footer_elements">
-                  <div class="menu-elements">
-                    <li>
-                      <a href="#">
-                          Privacy Policy
-                      </a>
-                  </li>
-                  <li>
-                      <a href="#">
-                          About Wikipedia
-                      </a>
-                  </li>
-                  <li>
-                      <a href="#">
-                          Disclaimer
-                      </a>
-                  </li>
-                  <li>
-                      <a href="#">
-                          Feedback
-                      </a>
-                  </li>
-                  <li>
-                      <a href="#">
-                          Mobile view
-                      </a>
-                  </li>
-                  <li>
-                      <a href="#">
-                          Developers
-                      </a>
-                  </li>
-                  <li>
-                      <a href="#">
-                          Statistics
-                      </a>
-                  </li>
-                  <li>
-                      <a href="#">
-                          Cookies
-                      </a>
-                  </li>
-                  </div>
-                  <div id="footer-icons" class="footer_buttons">
-                      <a href="#">
-                          <img src="{% static 'img/wikimedia-button.png' %}">
-                      </a>
-                      <a href="#">
-                          <img id="button_footer1" src="{% static 'img/poweredby_mediawiki_88x31.png' %}">
-                      </a>
-                  </div>
-              </ul>
-          </nav>
-
-      </div>
-  </footer>
+   {% include "./general-footer.html" %}
+   {{ footer }}
 
 </body>
 

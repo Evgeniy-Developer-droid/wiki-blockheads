@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView
 from .serializers import PostsSerializer
 from .pagination import StandardResultsSetPagination
-from .models import PostsModel, CommentsModel
+from .models import PostsModel, CommentsModel, Settings
 # from .forms import CreatePostForm
 from .forms import CreatePostForm
 
@@ -70,17 +70,27 @@ def create_new_post(request):
 def single_post(request, pk):
     # function to view a single post
     post = PostsModel.objects.get(pk=pk)
+    post.count_views = post.count_views + 1
+    post.save()
     comments = CommentsModel.objects.filter(post=post)
     return render(request, 'Content/single-post.html', context={
         'post': post,
         'comments_count': comments.count,
         'comments': comments,
-        'time_published': post.timestamps
+        'time_published': post.timestamps,
+        'count_views': post.count_views
         })
 
 
 
 def main_page(request):
     # home page with posts
-    posts = PostsModel.objects.all().order_by('-timestamps')
-    return render(request, 'Content/main-page.html', context={'posts': posts})
+    all_posts = PostsModel.objects.all().filter(status='active').order_by('-timestamps')
+    popular_posts = all_posts.order_by('-count_views')
+    print(popular_posts)
+    settings = Settings.objects.latest('id')
+    return render(request, 'Content/main-page.html', context={
+        'posts': all_posts,
+        'settings': settings,
+        'popular_posts': popular_posts
+    })

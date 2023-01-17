@@ -228,6 +228,7 @@ input#search:focus{
 }
 
 .main_body-container{
+    width: 100%;
     position: absolute;
     top: 80px;
     left: 160px;
@@ -388,6 +389,12 @@ input#search:focus{
     color: #202122;
     font-weight: 500;
     margin: 7px 0;
+}
+.main-block-info {
+    display: flex;
+}
+.main-block-info p{
+    margin-right: 10px;
 }
 
 .link-for-post {
@@ -629,14 +636,13 @@ small{
 .main__bottom h3 span a{
     color: #3366bb;
 }
-.main__footer{
-    position: absolute;
-    left: 160px;
-    top: 2891px;
-    width: 100%;
-    background-color: rgb(251, 251, 251);
-    height: 50px;
-    padding: 20px;
+.main-footer{
+
+    margin-left: auto;
+    margin-right: auto;
+    height: 150px;
+    margin-top: 60px;
+    border-top: 1px solid #a2a9b1;
 }
 
 .footer_elements{
