@@ -25,12 +25,14 @@ a{
 a:hover{
     text-decoration: 1px underline;
 }
+body{
+   background-color:  #f6f6f6;
+}
 body,html {
     font-family: sans-serif;
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
-
 }
 ol, ul {
     /* list-style: none;  маркеры без кружочков */
@@ -58,10 +60,6 @@ table {
 }
 
 .main_header{
-
-    position: absolute;
-    top: 0;
-    right: 0;
     width: 100%;
     z-index: 100;
     background-color: #fbfbfb;
@@ -70,17 +68,22 @@ table {
     height: 80px;
 }
 .personal-labels{
-
-    position: absolute;
-    top: 6px;
-    right: 20px;
-    z-index: 100;
+  float: right;
 
 
 }
 .personal-menu-content-list{
     display: flex;
     list-style: none;
+    position: relative;
+    left: 125px;
+    margin-top: 6px;
+    background-image: url("/img/user-avatar.svg");
+    background-position: left 3px;
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    padding-top: 2px;
+    padding-left: 10px;
 }
 .user_system{
     margin-left: 9px;
@@ -92,16 +95,12 @@ table {
     color: #54595d;
 }
 .personal-labels{
-    background-image: url("/img/user-avatar.svg");
-    background-position: left 3px;
-    background-repeat: no-repeat;
-    background-size: 15px 15px;
-    padding-top: 2px;
-    padding-left: 10px;
+    
 
 }
 .left-navigation{
     float: left;
+    margin-right: 50px;
     margin-left: 160px;
     margin-top: 33px;
     margin-bottom: -40px;
@@ -124,35 +123,11 @@ table {
     padding-right: 8px;
     cursor: pointer;
 }
+.left-navigation-content-list{
+   
+}
 
-.main__header-logo a:hover{
-    text-decoration: none;
-    }
-    
-    #logo-image-Wikipedia{
-        width: 80px;
-        height: 80px;
-        margin-left: 29px;
-        margin-top: 20px;
-    }
-    
-    .logo {
-        
-        height: 100%;
-        align-items: center;
-    }
-    .logo-text{
-        font-family: 'Nunito', sans-serif;
-        font-size: 20px;
-        font-weight: 700;
-        margin-left: 15px;
-        color: #000000;
-    }
-    .logo-img{
-       
-    }
-
-.left-navigation-content li {
+.left-navigation-content li {admin/Services/imageannouncement/1/change/
     background-image: linear-gradient(to top, #77c1f6 0, #e8f2f8 1px, #ffffff 100%);
     background-position: left bottom;
     background-repeat: repeat-x;
@@ -166,15 +141,40 @@ table {
 }
 .right-navigation{
     float: right;
-    margin-top: 33px;
+    margin-top: 6px;
+    margin-right: -40px;
+    z-index: 100;
+   
+    
+   
 }
-.search {
-    margin-top: 12px;
+
+.form-search{
+  position: relative;
+  margin-top: 12px;
    margin-left: 10px;
    margin-right: 20px;
-    box-shadow: inset 0 0 0 1px #a2a9b1;
     outline: 1px solid transparent;
 }
+
+.button-search-input{
+    height: 33px;
+    width: 30px;
+    cursor: pointer;
+    position: relative;
+    right: 40px;
+    border: none;
+    background: transparent;
+
+}
+.button-search-input:before {
+    content: "\f002";
+    font-family: FontAwesome;
+    font-size: 16px;
+    color: black;
+  
+  }
+
 input#search{
     background-color: rgba(255,255,255,0.5);
     color: #000000;
@@ -188,26 +188,6 @@ input#search{
     font-family: inherit;
     font-size: 13px;
     transition-property: border-color,box-shadow;
-}
-
-.search-button{
-    background: no-repeat center / 1.23076923em url(/img/search33.svg);
-    opacity: 0.67;
-    position: absolute;
-    top: 50px;
-    bottom: 1px;
-    right: 20px;
-    min-width: 28px;
-    width: 2.15384615em;
-    border: 0;
-    padding: 0;
-    cursor: pointer;
-    font-size: 0.8125em;
-    direction: ltr;
-    text-indent: -99999px;
-    white-space: nowrap;
-    overflow: hidden;
-    z-index: 1;
 }
 
 input#search:focus{
@@ -228,42 +208,68 @@ input#search:focus{
 }
 
 .main_body-container{
-    width: 100%;
-    position: absolute;
-    top: 80px;
-    left: 160px;
+    background-color: #ffffff;
+    margin-left: 160px;
     border: 1px solid #a7d7f9;
     padding: 1.25em 1.5em 1.5em 1.5em;
     border-right: none;
     line-height: 1.6;
 
 }
-/* .main-logo{
-    background-image: url("/static/media/img/Wikipedia-logo-for-Ukraine.png");
+.main__header-logo a:hover{
+text-decoration: none;
+}
+
+#logo-image-Wikipedia{
+    width: 80px;
+    height: 80px;
+    margin-left: 29px;
+    margin-top: 20px;
+}
+
+.logo {
+    
+    height: 100%;
+    align-items: center;
+}
+.logo-text{
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 15px;
+    color: #000000;
+}
+.logo-img{
+   
+}
+.main-logo{
+    background-image: url("/img/Wikipedia-logo-for-Ukraine.png");
     background-repeat: no-repeat;
     display: block;
     background-size: 135px;
     height: 155px;
     text-decoration: none;
     background-position: center center;
-} */
+}
 .left-menu-panel{
 
-
-}
-.left-menu-panel__container{
-    position: absolute;
+    height: 0;
+    position: relative;
     top: 0;
     width: 10em;
     left: 0;
     z-index: 200;
-    background-color: rgb(251, 251, 251);
+   
+}
+.left-menu-panel__container{
+   
 
 }
 .main_pages_list{
     list-style: none;
     margin-left: 20px;
     margin-top: 30px;
+  
 }
 .main_pages_list li a{
     color: #0645AD;
@@ -340,7 +346,7 @@ input#search:focus{
 }
 .main_head_menu{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     text-align: center;
     margin-left: 30px;
     list-style: none;
@@ -390,17 +396,6 @@ input#search:focus{
     font-weight: 500;
     margin: 7px 0;
 }
-.main-block-info {
-    display: flex;
-}
-.main-block-info p{
-    margin-right: 10px;
-}
-
-.link-for-post {
-    display: contents;
-}
-
 .three-dots-icon{
 
     width: 30px;
@@ -413,7 +408,8 @@ input#search:focus{
 .main-block-content span{
     margin: 10px;
 
-    background: #fafafa;
+    float: right;
+    background: #ffffff;
 }
 .main-block-links {
     display: flex;
@@ -423,6 +419,13 @@ input#search:focus{
     font-weight: bold;
     clear: both;
 }
+
+.main-block-info {
+
+    display: flex;
+
+}
+
 .main-block-button{
     background-color: #f8f9fa;
     color: #202122;
@@ -447,7 +450,6 @@ input#search:focus{
 .main-block-links a{
     font-size: 14px;
 }
-
 #image_Jan_Vermeer{
     width: 126px;
     height: 150px;
@@ -636,20 +638,17 @@ small{
 .main__bottom h3 span a{
     color: #3366bb;
 }
-.main-footer{
-
-    margin-left: auto;
-    margin-right: auto;
-    height: 150px;
-    margin-top: 60px;
-    border-top: 1px solid #a2a9b1;
+.main__footer{
+    margin-left: 160px;
+    width: 100%;
+    height: 50px;
+    padding: 20px;
 }
 
 .footer_elements{
     display: flex;
     list-style: none;
     padding-top: 8px;
-
 
 }
 .footer_elements li a{
@@ -663,8 +662,12 @@ small{
 }
 
 .text-footer p{
+    margin-top: 15px;
     font-size: 12px;
     color: #202122;
+}
+.nav{
+    margin-top: 15px;
 }
 .footer_elements{
     justify-content: space-between;

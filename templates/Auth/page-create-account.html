@@ -74,17 +74,6 @@
             <h1>Create account</h1>
         </div>
 
-        <div class="language_links">
-            <p>
-                Language: <a href="#" hreflang="de" lang="de">Deutsch</a> |
-                <a href="#" hreflang="en" lang="en"> English</a> |
-                <a href="#" hreflang="es" lang="es"> Esperanto</a> |
-                <a href="#" hreflang="fr" lang="fr"> français</a> |
-                <a href="#" hreflang="es" lang="es"> español</a> |
-                <a href="#" hreflang="it" lang="it"> italiano</a> |
-                <a href="#" hreflang="it" lang="it"> Nederlands</a> |
-            </p>
-        </div>
     <div class="content__wrapper">
         <form class="form-input" action="register" method="post">
             {% csrf_token %}
@@ -177,66 +166,9 @@
     </div>
 
 </main>
-<footer class="main-footer">
-    <div class="nav">
 
-        <nav class="footer__menu">
-            <ul class="footer_elements">
-                <li>
-                    <a href="#">
-                        Privacy policy
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        About MediaWiki.org
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Disclaimers
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Code of Conduct
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Mobile view
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Developers
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Statistics
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Cookie statement
-                    </a>
-                </li>
+    {% include "../Content/general-footer.html" %}
+    {{ footer }}
 
-                <div id="footer-icons" class="footer_buttons">
-                    <a href="#">
-                        <img  src="{% static 'img/wikimedia-button.png' %}">
-                    </a>
-                    <a href="#">
-                        <img id="button_footer1" src="{% static 'img/poweredby_mediawiki_88x31.png' %}">
-                    </a>
-                </div>
-            </ul>
-        </nav>
-
-
-
-    </div>
-</footer>
 </body>
 </html>
