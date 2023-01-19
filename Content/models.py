@@ -11,6 +11,8 @@ class PostsModel(models.Model):
         ('active', 'active')
     ]
 
+    update = models.CharField(max_length=255, default='')
+
     timestamps = models.DateTimeField(auto_now_add=True)
     topic = models.CharField(max_length=255, default='')
     message = models.TextField()
@@ -46,6 +48,10 @@ class Settings(models.Model):
 
     welcome_phrase = models.CharField(max_length=255)
     description_site = models.TextField(default='')
+
+    single_page_title = models.CharField(max_length=255, default='')
+
+    footer_text = models.TextField(default='')
 
     def __str__(self) -> str:
         return self.welcome_phrase

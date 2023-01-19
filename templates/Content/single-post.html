@@ -77,47 +77,23 @@
   <section class="main-content">
       <div class="main-content__wrapper">
         <div class="head-title">
-            <h1>Project:Village Pump</h1>
+            <h1>{{ settings.single_page_title }}</h1>
         </div>
         <div class="page-toolbar">
         <div class="left-navigation-toolbar">
 
-        <ul class="items-toolbar">
-            <li>
-                <a href="#1">MediaWiki.org</a>
-            </li>
-            <li>
-                <a href="#2">Discussion</a>
-            </li>
-        </ul>
-
          </div>
-            <div class="right-navigation-toolbar">
+            <!-- <div class="right-navigation-toolbar">
 
                 <ul class="items-toolbar">
                     <li>
                         <a href="#3">View history</a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </div>
 
         <div class="main-posts-container">
-            <div class="flow-board-navigation">
-              <div class="navigation_widget">
-                 <div class="left-items-navigation">
-
-                     <button class="button-navigation-left" role="button">
-                         <img id="navigation-image" src="{% static 'img/navigation.png' %}">
-                         <span>Browse topics</span>
-                     </button>
-
-                     <button class="button-navigation-right" role="button">
-                         <span>Recently active topics</span>
-                         <img id="strelka-image" src="{% static 'img/strelka.svg' %}">
-                     </button>
-                 </div>
-             </div>
             </div>
 
            <div class="flow-board">
@@ -130,6 +106,7 @@
                 <div class="flow-topic-titlebar">
                   <h1>{{ post.topic }}</h1>
                   <p>{{ post.message | safe }}</p>
+                    <button >Update</button>
                     <div class="flow-topic-meta">
                         <span>{{ comments_count }} comments •</span>
                         <span>{{ count_views }} views •</span>

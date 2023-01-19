@@ -3,6 +3,14 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.http import HttpResponse
 from .forms import LoginForm, RegisterUserForm
+from django.contrib.auth.models import User
+from Content.models import PostsModel
+
+
+def info_for_register_page():
+    all_users = User.objects.all().count()
+    all_posts = PostsModel.objects.all().count()
+    return {'count_users': all_users, 'count_posts': all_posts}
 
 
 def logout_view(request):
@@ -46,7 +54,10 @@ def register(request):
                 return redirect("main-page")
             messages.error(request, "Unsuccessful registration. Invalid information.")
         form = RegisterUserForm()
-        return render (request=request, template_name="Auth/page-create-account.html", context={"register_form":form})
+        info = info_for_register_page()
+        return render (request=request, template_name="Auth/page-create-account.html", context={"register_form":form,
+            'count_users': info['count_users'],
+            'count_posts': info['count_posts']})
     return redirect('main-page')
 
 def index(request):
