@@ -11,15 +11,23 @@ class PostsModel(models.Model):
         ('active', 'active')
     ]
 
-    update = models.CharField(max_length=255, default='')
+    update = models.DateTimeField(null=True, blank=True)
 
     timestamps = models.DateTimeField(auto_now_add=True)
     topic = models.CharField(max_length=255, default='')
     message = models.TextField()
     status = models.CharField(max_length=255, choices=STATUS_POST, default='pending')
-    media = models.ImageField(upload_to='content', default='', blank=True)
+    media_main_post = models.ImageField(upload_to='content', default='', blank=True)
     count_views = models.IntegerField(default=0)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='user')
+
+    media_sidebar = models.ImageField(upload_to='content', default='', blank=True)
+    developers = models.TextField(default='' , blank=True)
+    publishers = models.TextField(default='', blank=True)
+    genres = models.CharField(max_length=255, default='')
+    release_dates = models.DateField(auto_now=False, auto_now_add=False, blank=True, null=True)
+    game_modes = models.CharField(max_length=255, default='', blank=True)
+    platforms = models.CharField(max_length=255, default='', blank=True)
 
     class Meta:
         verbose_name = "Post"

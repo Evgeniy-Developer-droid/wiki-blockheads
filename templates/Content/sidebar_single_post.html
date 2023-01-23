@@ -1,0 +1,19 @@
+{% load static %}
+{% block sidebar %}
+
+<div class="sidebar-single-post">
+
+    {% if post.media_sidebar %}
+        <img src="{{ post.media_sidebar.url }}" alt="">
+    {% endif %}
+    <p>Developers: <span>{{ post.developers }}</span></p>
+    <p>Publishers: <span>{{ post.publishers }}</span></p>
+    <p>Genre(s): <span>{{ post.genres }}</span></p>
+    <p>Release date: <span>{{ post.release_dates }}</span></p>
+    <p>Game modes: <span>{{ post.game_modes }}</span></p>
+    <p>Platforms: <span>{{ post.platforms }}</span></p>
+    <span></span>
+
+</div>
+
+{% endblock %}

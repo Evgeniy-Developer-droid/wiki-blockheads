@@ -112,8 +112,8 @@
             <div class="main-block-header">
                 <a href="{% url 'single-post' i.id %}" class="link-for-post">
                     <h1>{{ i.topic | safe }}</h1>
-                    {% if i.media %}
-                    <img class="main-block-image" src="{{ i.media.url }}">
+                    {% if i.media_main_post %}
+                    <img class="main-block-image" src="{{ i.media_main_post.url }}">
                     {% else %}
                     {% endif %}
                 </a>

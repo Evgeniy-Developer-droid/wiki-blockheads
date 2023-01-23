@@ -397,6 +397,8 @@ button:focus{
     margin-top: 0.6em;
 }
 .flow-topic-titlebar{
+    display: flex;
+    justify-content: space-between;
     position: relative;
     padding: 0.5em 0;
     background-color: #eaecf0;
@@ -406,6 +408,11 @@ button:focus{
 
 .flow-topic-titlebar p{
     margin: 10px 0;
+}
+
+.update-post {
+    padding: 5px;
+    background: #758ec0;
 }
 
 .flow-board {
@@ -441,6 +448,10 @@ button:focus{
 }
 .flow-topic-titlebar{
     padding-left: 14px;
+}
+.flow-topic-titlebar img{
+    float: right;
+    margin: 0 0 5px 10px;
 }
 .flow-post-main{
     margin: 16px 0 0 16px;
@@ -552,10 +563,10 @@ input#reply1::placeholder {
     font-size: 14px;
     color: #202122;
 }
-.main-content{
+.main-content-single-post{
     display: flex;
     flex-direction: column;
-    width: 960px;
+    width: 80%;
 }
 .text-footer p{
     color: #202122;
@@ -563,4 +574,24 @@ input#reply1::placeholder {
     padding: 8px 0;
     font-size: 12px;
     padding-top: 20px;
+}
+
+.sidebar-single-post {
+    margin: 100px 0;
+    padding: 0;
+    width: 20%;
+    background-color: #f1f1f1;
+    /* position: fixed; */
+    height: inherit;
+    overflow: auto;
+  }
+
+.sidebar-single-post p{
+    margin: 10px 5px;
+}
+
+.sidebar-single-post img{
+
+    max-width: 220px;
+
 }

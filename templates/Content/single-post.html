@@ -75,7 +75,7 @@
   </header>
 
   <section class="main-content">
-      <div class="main-content__wrapper">
+      <div class="main-content-single-post">
         <div class="head-title">
             <h1>{{ settings.single_page_title }}</h1>
         </div>
@@ -97,20 +97,25 @@
             </div>
 
            <div class="flow-board">
-               <div class="reply-post-block1">
-                   <input id="reply1" type="text" name=text" class="reply1" placeholder="Start a new topic">
-               </div>
              <div class="flow-topics">
 
 
                 <div class="flow-topic-titlebar">
-                  <h1>{{ post.topic }}</h1>
-                  <p>{{ post.message | safe }}</p>
-                    <button >Update</button>
-                    <div class="flow-topic-meta">
-                        <span>{{ comments_count }} comments •</span>
-                        <span>{{ count_views }} views •</span>
-                        <span>{{ time_published }}</span>
+                    <div class="flow-post-content">
+                        <h1>{{ post.topic }}</h1>
+                        <p>{% if post.media_main_post %}
+                            <img src="{{ post.media_main_post.url }}" alt="">
+                        {% endif %}
+                            
+                            {{ post.message | safe }}</p>
+                          <div class="flow-topic-meta">
+                              <span>{{ comments_count }} comments •</span>
+                              <span>{{ count_views }} views •</span>
+                              <span>{{ time_published }}</span>
+                          </div>
+                    </div>
+                    <div class="block-button-update">
+                        <a href="{% url 'update-post' post.id %}" class="update-post">Update</a>
                     </div>
                 </div>
                 
@@ -143,6 +148,10 @@
 
         </div>
       </div>
+
+    {% include "./sidebar_single_post.html" %}
+    {{ sidebar }}
+
   </section>
 
   {% include "./general-footer.html" %}

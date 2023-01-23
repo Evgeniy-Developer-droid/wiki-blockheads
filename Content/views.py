@@ -4,8 +4,9 @@ from rest_framework.generics import GenericAPIView
 from .serializers import PostsSerializer
 from .pagination import StandardResultsSetPagination
 from .models import PostsModel, CommentsModel, Settings
+from django.shortcuts import get_object_or_404
 # from .forms import CreatePostForm
-from .forms import CreatePostForm
+from .forms import CreatePostForm, UpdatePostForm
 from datetime import datetime
 
 
@@ -96,4 +97,17 @@ def main_page(request):
         'posts': all_posts,
         'settings': settings,
         'popular_posts': popular_posts
+    })
+
+
+def update_post(request, pk):
+    form = UpdatePostForm()
+    instance = get_object_or_404(PostsModel, id=pk)
+    if request.method == 'POST':
+        form = UpdatePostForm(request.POST or None, instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect('main-page')
+    return render(request, 'Content/update-post.html', context={
+        'post': instance
     })
