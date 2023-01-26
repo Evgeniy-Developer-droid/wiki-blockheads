@@ -18,6 +18,9 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     vertical-align: baseline;
     background: transparent;
 }
+.navigation{
+    display: flex;
+}
 a{
     color: #0645AD;
     text-decoration: none;
@@ -127,7 +130,7 @@ table {
    
 }
 
-.left-navigation-content li {admin/Services/imageannouncement/1/change/
+.left-navigation-content li {
     background-image: linear-gradient(to top, #77c1f6 0, #e8f2f8 1px, #ffffff 100%);
     background-position: left bottom;
     background-repeat: repeat-x;
@@ -139,11 +142,10 @@ table {
     line-height: 1.125em;
     white-space: nowrap;
 }
+
 .right-navigation{
     float: right;
     margin-top: 6px;
-    margin-right: -40px;
-    z-index: 100;
    
     
    
@@ -666,7 +668,6 @@ small{
     font-size: 14px;
     margin-top: 15px;
     margin-left: 10px;
-    r
 }
 .nav{
     margin-top: 15px;

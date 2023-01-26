@@ -1,13 +1,34 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView
 from .serializers import PostsSerializer
 from .pagination import StandardResultsSetPagination
 from .models import PostsModel, CommentsModel, Settings
 from django.shortcuts import get_object_or_404
-# from .forms import CreatePostForm
 from .forms import CreatePostForm, UpdatePostForm
 from datetime import datetime
+import random
+
+
+def games(request):
+    games = PostsModel.objects.filter(status='active').order_by('created')[:5]
+    return render(request, 'Content/games.html', {'games': games})
+
+def new_edits(request):
+    last_edits = PostsModel.objects.filter(status='active').order_by('updated')[:5]
+    return render(request, 'Content/new-edits.html', {"last_edits": last_edits})
+
+def new_games(request):
+    new_posts = PostsModel.objects.filter(status='active').order_by('created')[:5]
+    return render(request, 'Content/new-games.html', {"new_posts": new_posts})
+
+def randome_game(request):
+    items = list(PostsModel.objects.all())
+    if items:
+        random_item = random.choice(items)
+        return redirect(reverse("single-post", args=(random_item.pk,)))
+    return redirect(reverse("main-page"))
 
 
 class GetAllPostsView(GenericAPIView):
@@ -81,7 +102,7 @@ def single_post(request, pk):
         'post': post,
         'comments_count': comments.count,
         'comments': comments,
-        'time_published': post.timestamps,
+        'time_published': post.created,
         'count_views': post.count_views,
         'settings': settings
         })
@@ -90,7 +111,7 @@ def single_post(request, pk):
 
 def main_page(request):
     # home page with posts
-    all_posts = PostsModel.objects.all().filter(status='active').order_by('-timestamps')
+    all_posts = PostsModel.objects.filter(status='active').order_by('created')
     popular_posts = all_posts.order_by('-count_views')
     settings = Settings.objects.latest('id')
     return render(request, 'Content/main-page.html', context={
@@ -101,13 +122,23 @@ def main_page(request):
 
 
 def update_post(request, pk):
-    form = UpdatePostForm()
+    # form = UpdatePostForm()
     instance = get_object_or_404(PostsModel, id=pk)
+    form = UpdatePostForm(request.POST or None, instance=instance)
     if request.method == 'POST':
         form = UpdatePostForm(request.POST or None, instance=instance)
         if form.is_valid():
             form.save()
+            instance.status = 'pending'
+            instance.save()
             return redirect('main-page')
+        else:
+            return render(request, 'Content/update-post.html', context={
+                'post': instance,
+                'form': form,
+                'message': "Not valid data"
+            })
     return render(request, 'Content/update-post.html', context={
-        'post': instance
+        'post': instance,
+        'form': form
     })

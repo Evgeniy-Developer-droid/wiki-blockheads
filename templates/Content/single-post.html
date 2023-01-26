@@ -3,7 +3,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>page_Separate-post</title>
+    <title>Single game</title>
 
     <link rel="stylesheet" href="{% static 'css/single-post.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -14,12 +14,6 @@
     <div class="wrapper">
         <div class="flexbox main__header-flexbox">
 
-            <div class="main__header-main-menu">
-                <div class="main-menu">
-                    <img class="menu-icon" src="{% static 'img/3-lines-menu.svg' %}">
-                </div>
-            </div>
-
             <div class="main__header-logo">
                 <a href="/">
                     <div class="logo">
@@ -29,40 +23,22 @@
                 </a>
             </div>
 
-            <div class="main__header-search-mediawiki">
-                <form class="form-input-search">
-                    <img class="icon-search" src="{% static 'img/vector-search.png' %}">
-                    <input id="search" type="text" name="text" class="search" placeholder="Search MediaWiki">
-                    <input type="submit" name="submit" class="submit" value="Search">
-                </form>
-            </div>
 
-            <div class="main__header-change-language">
-                <a href="#" class="change-language">
+            <div class="navigation">
+                <a href="#" class="">
                     <img class="language-icons" src="{% static 'img/language.svg' %}">
                     <span>English</span>
                 </a>
-            </div>
-
-            {% if user.is_authenticated %}
-                <div class="main__header-create-account">
+    
+                {% if user.is_authenticated %}
                     <a href="{% url 'logout' %}" class="create-account">
                         <span>Logout</span>
                     </a>
-                </div>
-            {% else %}
-                <div class="main__header-create-account">
+                {% else %}
                     <a href="{% url 'register' %}" class="create-account">
                         <span>Create account</span>
                     </a>
-                </div>
-            {% endif %}
-
-
-            <div class="main__header-more-options">
-                <a href="#" class="more-options">
-                    <img class="three-dots-icon" src="{% static 'img/three-dots-svgrepo-com%20(4).svg' %}">
-                </a>
+                {% endif %}
             </div>
         </div>
 
@@ -77,7 +53,7 @@
   <section class="main-content">
       <div class="main-content-single-post">
         <div class="head-title">
-            <h1>{{ settings.single_page_title }}</h1>
+            <h1>{{ post.topic }}</h1>
         </div>
         <div class="page-toolbar">
         <div class="left-navigation-toolbar">
@@ -102,12 +78,33 @@
 
                 <div class="flow-topic-titlebar">
                     <div class="flow-post-content">
-                        <h1>{{ post.topic }}</h1>
-                        <p>{% if post.media_main_post %}
-                            <img src="{{ post.media_main_post.url }}" alt="">
-                        {% endif %}
-                            
-                            {{ post.message | safe }}</p>
+                        
+                        <div class="section">
+                            <p>{% if post.media_main_post %}
+                                <img src="{{ post.media_main_post.url }}" alt="">
+                            {% endif %}
+                                
+                                {{ post.base | safe }}</p>
+                        </div>
+
+                        <div class="section">
+                            <h2>Gameplay</h2>
+                            <hr>
+                            <p>{{ post.gameplay | safe }}</p>
+                        </div>
+
+                        <div class="section">
+                            <h2>Growth</h2>
+                            <hr>
+                            <p>{{ post.growth | safe }}</p>
+                        </div>
+
+                        <div class="section">
+                            <h2>Latest Update</h2>
+                            <hr>
+                            <p>{{ post.latest_update | safe }}</p>
+                        </div>
+
                           <div class="flow-topic-meta">
                               <span>{{ comments_count }} comments •</span>
                               <span>{{ count_views }} views •</span>
@@ -137,9 +134,9 @@
 
                  {% endfor %}
 
-                 <div class="reply-post">
+                 {% comment %} <div class="reply-post">
                          <input id="reply" type="text" name="text" class="reply" placeholder="Reply to 'Allow Support on talk pages'">
-                 </div>
+                 </div> {% endcomment %}
 
              </div>
            </div>

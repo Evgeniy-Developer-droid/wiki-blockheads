@@ -5,6 +5,12 @@ from . import views
 urlpatterns = [
     path('', views.main_page, name='main-page'),
     path('create-new-post', views.create_new_post, name='create-new-post'),
+    
+    path('games', views.games, name='games'),
+    path('new-edits', views.new_edits, name='new-edits'),
+    path('new-games', views.new_games, name='new-games'),
+    path('randome-game', views.randome_game, name='randome-game'),
+
     path('update-post/<int:pk>', views.update_post, name='update-post'),
     path('post/<int:pk>', views.single_post, name='single-post'),
 

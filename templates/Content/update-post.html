@@ -12,12 +12,6 @@
     <div class="wrapper">
         <div class="flexbox main__header-flexbox">
 
-            <div class="main__header-main-menu">
-                <div class="main-menu">
-                    <img class="menu-icon" src="{% static 'img/3-lines-menu.svg' %}">
-                </div>
-            </div>
-
             <div class="main__header-logo">
                 <a href="/">
                     <div class="logo">
@@ -27,42 +21,23 @@
                 </a>
             </div>
 
-            <div class="main__header-search-mediawiki">
-                <form class="form-input-search">
-                    <img class="icon-search" src="{% static 'img/vector-search.png' %}">
-                    <input id="search" type="text" name="text" class="search" placeholder="Search MediaWiki">
-                    <input type="submit" name="submit" class="submit" value="Search">
-                </form>
-            </div>
-
-            <div class="main__header-change-language">
-                <a href="#" class="change-language">
+            <div class="navigation">
+                <a href="#" class="">
                     <img class="language-icons" src="{% static 'img/language.svg' %}">
                     <span>English</span>
                 </a>
-            </div>
-
-            {% if user.is_authenticated %}
-                <div class="main__header-create-account">
+    
+                {% if user.is_authenticated %}
                     <a href="{% url 'logout' %}" class="create-account">
                         <span>Logout</span>
                     </a>
-                </div>
-            {% else %}
-                <div class="main__header-create-account">
+                {% else %}
                     <a href="{% url 'register' %}" class="create-account">
                         <span>Create account</span>
                     </a>
-                </div>
-            {% endif %}
-            
-
-
-            <div class="main__header-more-options">
-                <a href="#" class="more-options">
-                    <img class="three-dots-icon" src="{% static 'img/three-dots-svgrepo-com%20(4).svg' %}">
-                </a>
+                {% endif %}
             </div>
+
         </div>
 
         <div class="main__header-sitenotice">
@@ -82,15 +57,37 @@
                 {% csrf_token %}
                 <div class="input-topic">
                     <span>Topic</span>
-                    <input type="text" name="topic">
+                    <input type="text" name="topic" value="{{ form.topic.value }}">
                 </div>
 
                 <div class="input-message">
-                    <span>Message</span>
+                    <span>Main</span>
                     <div class="sunnote-form">
-                    {{ form.message }}
+                        {{ form.base }}
+                    </div>
                 </div>
+
+                <div class="input-message">
+                    <span>GamePlay</span>
+                    <div class="sunnote-form">
+                        {{ form.gameplay }}
+                    </div>
                 </div>
+
+                <div class="input-message">
+                    <span>Growth</span>
+                    <div class="sunnote-form">
+                        {{ form.growth }}
+                    </div>
+                </div>
+
+                <div class="input-message">
+                    <span>Latest update</span>
+                    <div class="sunnote-form">
+                        {{ form.latest_update }}
+                    </div>
+                </div>
+
 
                 <div class="error-form-message">
                     {{ message }}
@@ -101,67 +98,6 @@
         </div>
     </div>
 </main>
-<footer class="main-footer">
-    <div class="text-footer">
-        <p>This page was last edited on 5 January 2023, at 23:33.</p>
-    </div>
-    <div class="nav">
 
-        <nav class="footer__menu">
-            <ul class="footer_elements">
-                <li>
-                    <a href="#">
-                        Privacy policy
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        About MediaWiki.org
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Disclaimers
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Code of Conduct
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Mobile view
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Developers
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Statistics
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Cookie statement
-                    </a>
-                </li>
-
-                <div id="footer-icons" class="footer_buttons">
-                    <a href="#">
-                        <img  src="{% static 'img/wikimedia-button.png' %}">
-                    </a>
-                    <a href="#">
-                        <img id="button_footer1" src="{% static 'img/poweredby_mediawiki_88x31.png' %}">
-                    </a>
-                </div>
-            </ul>
-        </nav>
-
-    </div>
-</footer>
 </body>
 </html>

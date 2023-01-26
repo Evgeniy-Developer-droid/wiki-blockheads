@@ -9,6 +9,9 @@
 #captcha{
     margin-bottom: 0;
 }
+.flexbox{
+    justify-content: space-between;
+}
 .captcha-container{
     width: 100%;
     background-color: #f8f9fa;

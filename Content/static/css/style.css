@@ -57,13 +57,15 @@ table {
     display: flex;
     align-items: center;
 }
-
+.section{
+    margin-top: 2em;
+}
 
 .container-fluid{
     background-color: #ffffff;
     padding-left: 52px;
     padding-right: 52px;
-    width: 1427px;
+    max-width: 1427px;
     margin-left: auto;
     margin-right: auto;
 }

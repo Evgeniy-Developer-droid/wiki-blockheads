@@ -1,0 +1,11 @@
+[
+    {
+        "model": "Content.settings",
+        "pk": 1,
+        "fields": {
+            "welcome_phrase": "Welcome to blockheads",
+            "description_site": "We are glad to see you on our website",
+            "footer_text": "Copyright © 2023"
+        }
+    }
+]

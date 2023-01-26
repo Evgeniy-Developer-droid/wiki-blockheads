@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>main-page-Wikipedia</title>
+    <title>Games</title>
 
     <link rel="stylesheet" href="{% static 'css/main-page.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -47,27 +47,6 @@
     </div>
 </div>
   <header class="main_header">
-    {% comment %} <div class="personal-labels">
-      <div class="personal-menu-content">
-          <ul class="personal-menu-content-list">
-            {% if user.is_authenticated %}
-              <li class="user-system">
-                  <a href="{% url 'create-new-post' %}" title="">Create Post</a>
-              </li>
-              <li class="user_system">
-                <a href="{% url 'logout' %}" title="">Logout</a>
-            </li>
-            {% else %}
-            <li class="user_system">
-                <a href="{% url 'register' %}" title="">Sign Up</a>
-            </li>
-            <li class="user_system">
-                <a href="{% url 'login' %}" title="">Log In</a>
-            </li>
-            {% endif %}
-          </ul>
-      </div>
-    </div> {% endcomment %}
 
 
     <div class="right-navigation">
@@ -94,39 +73,23 @@
   </header>
     <main class="main_body-container">
 
-      <div class="main_top_section">
-        <div class="main_head">
-            <div class="main_head-text-left">
-                <h1>{{ settings.welcome_phrase }}</h1>
-                <p>{{ settings.description_site }}</p>
-            </div>
-        </div>
-         {% comment %} <ul class="main_head_menu">
 
-            <li class="item_main-head-menu">
-                <a href="/">Content</a>
-            </li>
-            <li class="item_main-head-menu">
-                <a href="{% url 'register' %}">Registration</a>
-            </li>
-         </ul> {% endcomment %}
-     </div>
-     
-     {% for i in posts %}
-        <div class="main-block">
-            <div class="main-block-header">
-                <a href="{% url 'single-post' i.id %}" class="link-for-post">
-                    <h1>{{ i.topic | safe }}</h1>
-                </a>
+
+        {% for i in last_edits %}
+            <div class="main-block">
+                    <div class="main-block-header">
+                        <a href="{% url 'single-post' i.id %}" class="link-for-post">
+                            <h1>{{ i.topic | safe }}</h1>
+                        </a>
+                    </div>
+                    <div class="main-block-links">
+                    </div>
+                    <div class="main-block-info">
+                        <p>{{ i.count_views }} views  •</p>
+                        <p>{{ i.created }}</p>
+                    </div>
             </div>
-            <div class="main-block-links">
-            </div>
-            <div class="main-block-info">
-                <p>{{ i.count_views }} views  •</p>
-                <p>{{ i.created }}</p>
-            </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
 
    </main>
 
