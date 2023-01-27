@@ -42,6 +42,9 @@ class PostsModel(models.Model):
     def __str__(self) -> str:
         return self.topic
 
+    def search_post(self):
+        return 
+
 
 class CommentsModel(models.Model):
 

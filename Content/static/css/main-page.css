@@ -151,6 +151,12 @@ table {
    
 }
 
+.search-input {
+    padding: 8px;
+    margin-top: 13px;
+    min-width: 271px;
+}
+
 .form-search{
   position: relative;
   margin-top: 12px;

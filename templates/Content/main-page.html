@@ -46,52 +46,59 @@
         </ul>
     </div>
 </div>
-  <header class="main_header">
-    {% comment %} <div class="personal-labels">
-      <div class="personal-menu-content">
-          <ul class="personal-menu-content-list">
-            {% if user.is_authenticated %}
-              <li class="user-system">
-                  <a href="{% url 'create-new-post' %}" title="">Create Post</a>
-              </li>
-              <li class="user_system">
-                <a href="{% url 'logout' %}" title="">Logout</a>
-            </li>
-            {% else %}
-            <li class="user_system">
-                <a href="{% url 'register' %}" title="">Sign Up</a>
-            </li>
-            <li class="user_system">
-                <a href="{% url 'login' %}" title="">Log In</a>
-            </li>
-            {% endif %}
-          </ul>
-      </div>
-    </div> {% endcomment %}
-
-
-    <div class="right-navigation">
-
-
-        <ul class="left-navigation-content-list">
-            {% if user.is_authenticated %}
-                <li class="item-left-navigation">
-                    <a href="{% url 'create-new-post' %}" title="">Create Post</a>
-                </li>
-                <li class="item-left-navigation">
+    {% block main-header %}
+    <header class="main_header">
+        {% comment %} <div class="personal-labels">
+          <div class="personal-menu-content">
+              <ul class="personal-menu-content-list">
+                {% if user.is_authenticated %}
+                  <li class="user-system">
+                      <a href="{% url 'create-new-post' %}" title="">Create Post</a>
+                  </li>
+                  <li class="user_system">
                     <a href="{% url 'logout' %}" title="">Logout</a>
                 </li>
-            {% else %}
-                <li class="item-left-navigation">
+                {% else %}
+                <li class="user_system">
                     <a href="{% url 'register' %}" title="">Sign Up</a>
                 </li>
-                <li class="item-left-navigation">
+                <li class="user_system">
                     <a href="{% url 'login' %}" title="">Log In</a>
                 </li>
-            {% endif %}
-        </ul>
-    </div> 
-  </header>
+                {% endif %}
+              </ul>
+          </div>
+        </div> {% endcomment %}
+    
+    
+        <div class="right-navigation">
+    
+    
+            <ul class="left-navigation-content-list">
+                    <li class="item-main-head-menu">
+                        <form action="{% url 'search_results' %}" method="get">
+                            <input name="search" type="text" placeholder="Search..." class="search-input">
+                            </form>
+                    </li>
+                {% if user.is_authenticated %}
+                    <li class="item-left-navigation">
+                        <a href="{% url 'create-new-post' %}" title="">Create Post</a>
+                    </li>
+                    <li class="item-left-navigation">
+                        <a href="{% url 'logout' %}" title="">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="item-left-navigation">
+                        <a href="{% url 'register' %}" title="">Sign Up</a>
+                    </li>
+                    <li class="item-left-navigation">
+                        <a href="{% url 'login' %}" title="">Log In</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div> 
+      </header>
+      {% endblock %}
     <main class="main_body-container">
 
       <div class="main_top_section">

@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from rest_framework.response import Response
+from django.db.models import Q
+from django.views.generic import TemplateView, ListView
 from rest_framework.generics import GenericAPIView
-from .serializers import PostsSerializer
+from .serializers import PostsSerializer, SinglePostSerializer
 from .pagination import StandardResultsSetPagination
 from .models import PostsModel, CommentsModel, Settings
 from django.shortcuts import get_object_or_404
@@ -75,6 +77,32 @@ class GetPostsForUser(GenericAPIView):
             return Response({'error': 'Enter GET parameter - "amount"!'})
 
 
+class GetSinglePost(GenericAPIView):
+
+    queryset = PostsModel.objects.all()
+    serializer_class = SinglePostSerializer
+
+    def get(self, request, pk):
+        try:
+            instance = self.queryset.get(pk=pk)
+            serializer = self.serializer_class(instance)
+            return Response(serializer.data)
+        except PostsModel.DoesNotExist:
+            return Response({'error': 'This post does not exist!'})
+
+
+class SearchGames(ListView):
+    model = PostsModel
+    template_name = 'Content/search_results.html'
+ 
+    def get_queryset(self):
+        query = self.request.GET.get('search')
+        object_list = PostsModel.objects.filter(
+            Q(topic__icontains=query)
+        )
+        return object_list
+
+
 def create_new_post(request):
     # function to create a new post
     if request.user.is_authenticated:
@@ -123,22 +151,24 @@ def main_page(request):
 
 def update_post(request, pk):
     # form = UpdatePostForm()
-    instance = get_object_or_404(PostsModel, id=pk)
-    form = UpdatePostForm(request.POST or None, instance=instance)
-    if request.method == 'POST':
+    if request.user.is_authenticated:
+        instance = get_object_or_404(PostsModel, id=pk)
         form = UpdatePostForm(request.POST or None, instance=instance)
-        if form.is_valid():
-            form.save()
-            instance.status = 'pending'
-            instance.save()
-            return redirect('main-page')
-        else:
-            return render(request, 'Content/update-post.html', context={
-                'post': instance,
-                'form': form,
-                'message': "Not valid data"
-            })
-    return render(request, 'Content/update-post.html', context={
-        'post': instance,
-        'form': form
-    })
+        if request.method == 'POST':
+            form = UpdatePostForm(request.POST or None, instance=instance)
+            if form.is_valid():
+                form.save()
+                instance.status = 'pending'
+                instance.save()
+                return redirect('main-page')
+            else:
+                return render(request, 'Content/update-post.html', context={
+                    'post': instance,
+                    'form': form,
+                    'message': "Not valid data"
+                })
+        return render(request, 'Content/update-post.html', context={
+            'post': instance,
+            'form': form
+        })
+    return redirect('main-page')
